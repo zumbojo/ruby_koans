@@ -15,8 +15,8 @@
 #
 def triangle(a, b, c)
   raise TriangleError.new if [a,b,c].any? { |n| n < 1 } 
-
-
+  sorted = [a,b,c].sort
+  raise TriangleError.new unless sorted[0] + sorted[1] > sorted[2]
 
   return :equilateral if a == b && a == c
   return :isosceles if a == b || a == c || b == c
