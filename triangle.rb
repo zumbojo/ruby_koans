@@ -14,6 +14,10 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  raise TriangleError.new if [a,b,c].any? { |n| n < 1 } 
+
+
+
   return :equilateral if a == b && a == c
   return :isosceles if a == b || a == c || b == c
   :scalene
