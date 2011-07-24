@@ -30,8 +30,49 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 # Your goal is to write the score method.
 
 def score(dice)
-  # You need to write this method
+  # dice.where(number).count = 3
+  #   remove these elements, recurse on cdr
+  #
+  #
+  #
+  # general pseudo:
+  # if dice.length is at least three
+  #   for (1..5) if dice.where(n).count = 3
+  #     return score, remove those elements
+  # if dice[0] == 1 or 5,
+  #   return score, remove those elements
+  # if dice[0] == anything else
+  #   return 0, remove those elements
+  # score(dice)
+
+  return 0 if dice.length == 0
+
+  dice.sort!
+  puts dice.inspect
+
+  (1..5).each do |n|
+    if dice.select { |item| item == n }.count >= 3
+      points = n == 1 ? 1000 : 3*n*100 
+      # return score(dicewithouttheseelements) + whatever 
+      first_index = dice.index(n)
+      3.times { dice.delete_at(first_index) }
+      return score(dice) + points
+    end
+
+    if dice[0] == 1
+      return score(dice[1..-1]) + 100 # [1..-1] is poor man's cdr
+    end
+
+    if dice[0] == 5
+      return score(dice[1..-1]) + 50
+    end
+
+    return score(dice[1..-1])
+  end
+
 end
+
+score([1,1,1,5,1]) # KML test
 
 class AboutScoringProject < EdgeCase::Koan
   def test_score_of_an_empty_list_is_zero
