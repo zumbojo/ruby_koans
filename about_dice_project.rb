@@ -5,6 +5,17 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 # class DiceSet
 #   code ...
 # end
+#
+# KML pseudo
+# store array
+# shuffle it once
+# return it
+# on roll, shuffle the existing array again, return it
+# if the roll number changes, create a different array
+
+class DiceSet
+
+end
 
 class AboutDiceProject < EdgeCase::Koan
   def test_can_create_a_dice_set
