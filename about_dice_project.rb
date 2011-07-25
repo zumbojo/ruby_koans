@@ -6,7 +6,7 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 #   code ...
 # end
 #
-# KML pseudo
+# KML pseudo:
 # store array
 # shuffle it once
 # return it
@@ -14,7 +14,17 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 # if the roll number changes, create a different array
 
 class DiceSet
+  attr_accessor :values
 
+  def initialize
+    @values = []
+  end
+
+  def roll(n)
+    # create an array of size n with random numbers, 1 to 6
+    @values = []
+    n.times { @values << (1..6).to_a.shuffle.shift }
+  end
 end
 
 class AboutDiceProject < EdgeCase::Koan
