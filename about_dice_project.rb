@@ -23,7 +23,7 @@ class DiceSet
   def roll(n)
     # create an array of size n with random numbers, 1 to 6
     @values = []
-    n.times { @values << (1..6).to_a.shuffle.shift }
+    n.times { @values << rand(6) + 1 }
   end
 end
 
