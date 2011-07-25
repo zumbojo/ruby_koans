@@ -54,8 +54,7 @@ def score(dice)
     if dice.select { |item| item == n }.count >= 3
       points = n == 1 ? 1000 : n*100 
       # return score(dicewithouttheseelements) + whatever 
-      first_index = dice.index(n)
-      3.times { dice.delete_at(first_index) }
+      3.times { dice.delete_at(dice.index(n)) }
       return score(dice) + points
     end
   end
