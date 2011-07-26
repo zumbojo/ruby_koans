@@ -22,7 +22,8 @@ class AboutClasses < EdgeCase::Koan
     assert_equal [], fido.instance_variables
 
     fido.set_name("Fido")
-    assert_equal ["@name"], fido.instance_variables
+    # assert_equal ["@name"], fido.instance_variables
+    assert_equal [:@name], fido.instance_variables # Ruby 1.9
   end
 
   def test_instance_variables_cannot_be_accessed_outside_the_class
@@ -180,7 +181,8 @@ class AboutClasses < EdgeCase::Koan
   def test_all_objects_support_to_s_and_inspect
     array = [1,2,3]
 
-    assert_equal "123", array.to_s
+    # assert_equal "123", array.to_s
+    assert_equal "[1, 2, 3]", array.to_s
     assert_equal "[1, 2, 3]", array.inspect
 
     assert_equal "STRING", "STRING".to_s
