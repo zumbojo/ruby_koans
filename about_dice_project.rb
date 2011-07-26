@@ -14,7 +14,7 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 # if the roll number changes, create a different array
 
 class DiceSet
-  attr_accessor :values
+  attr_reader :values
 
   def initialize
     @values = []
