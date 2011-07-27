@@ -32,7 +32,7 @@ class Proxy
   end
 
   def number_of_times_called(method_name)
-    # todo
+    @messages.count(method_name)
   end
 end
 
